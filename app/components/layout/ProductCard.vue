@@ -1,8 +1,13 @@
 <script setup lang="ts">
 import type { ProductCardProps } from '@app/types'
-import { formatPrice } from '@app/utils'
+import { formatPrice, calculateDiscount } from '@app/utils'
 
 const props = defineProps<ProductCardProps>()
+
+const discountTone = computed(() => {
+  if (!props.price.base) return undefined
+  return calculateDiscount(props.price.current, props.price.base) > 60 ? 'critical' : 'accent'
+})
 </script>
 
 <template>
@@ -12,7 +17,7 @@ const props = defineProps<ProductCardProps>()
     :class="{ 'product-card--small': props.small }"
     :aria-label="props.name"
   >
-    <div class="product-card__wrapper">
+    <div class="product-card__container">
       <div class="product-card__picture">
         <NuxtImg
           :src="props.image"
@@ -23,10 +28,15 @@ const props = defineProps<ProductCardProps>()
           class="product-card__picture-img"
         />
       </div>
+      <div v-if="props.price.base" class="product-card__discount">
+        <Badge variant="critical">
+          −{{ calculateDiscount(props.price.current, props.price.base) }}%
+        </Badge>
+      </div>
     </div>
     <div class="product-card__info">
       <div class="product-card__price">
-        <Text as="p" variant="headingSm" class="product-card__price-current">
+        <Text as="p" variant="headingSm" :tone="discountTone" class="product-card__price-current">
           {{ formatPrice(props.price.current, '₽') }}
         </Text>
         <Text
@@ -85,6 +95,16 @@ const props = defineProps<ProductCardProps>()
       width: 100%;
       height: 100%;
     }
+  }
+
+  &__container {
+    position: relative;
+  }
+
+  &__discount {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
   }
 
   &__info {

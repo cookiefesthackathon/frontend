@@ -15,7 +15,7 @@
     --color-button-background: var(--color-accent);
     --color-button-content: var(--color-white);
   } @else if ($color == secondary) {
-    --color-button-background: var(--color-layer-1);
+    --color-button-background: var(--color-layer-2);
     --color-button-content: var(--color-content);
   } @else if ($color == critical) {
     --color-button-background: var(--color-critical);

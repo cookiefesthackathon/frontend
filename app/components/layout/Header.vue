@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import type { HeaderProps } from '@app/types'
+import { useAuth } from '@app/composables'
 
+const { authEmail, logOut } = useAuth()
 const props = defineProps<HeaderProps>()
-const isAuth = ref(false)
+const isAuth = computed(() => Boolean(authEmail.value))
 </script>
 
 <template>
@@ -20,9 +22,10 @@ const isAuth = ref(false)
       </div>
     </div>
     <div class="header__auth">
-      <button v-if="!isAuth" type="button" class="header__auth-button">
+      <NuxtLink v-if="!isAuth" to="/login" class="header__auth-button">
         Войти
-      </button>
+      </NuxtLink>
+      <span v-else @click="logOut" class="header__auth-button">{{ authEmail }}</span>
     </div>
   </header>
 </template>

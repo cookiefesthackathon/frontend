@@ -8,9 +8,9 @@ const props = defineProps<RatingProps>()
 
 <template>
   <div class="rating">
-    <PhStar weight="fill" :size="16" class="rating__icon" />
+    <PhStar :weight="props.rating.value ? 'fill' : 'regular'" :size="16" :class="{ 'rating__icon--empty': !props.rating.value }" class="rating__icon" />
     <Text as="p" variant="caption" weight="bold" class="rating__value">
-      {{ props.rating.value }}
+      {{ props.rating.value ? props.rating.value : 'Нет оценок' }}
       <Text
         v-if="props.rating.count"
         as="span"
@@ -48,6 +48,10 @@ const props = defineProps<RatingProps>()
 
   &__icon {
     color: rgb(var(--color-caution));
+
+    &--empty {
+      color: rgb(var(--color-subtle));
+    }
   }
 }
 </style>

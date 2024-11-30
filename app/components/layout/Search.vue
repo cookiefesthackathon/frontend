@@ -27,9 +27,11 @@ const handleSearch = () => {
       @keydown.enter="handleSearch"
     >
     <div class="search__wrapper">
-      <button type="button" :class="props.large ? 'search__action-large' : 'search__action'" @click="handleSearch">
-        <PhMagnifyingGlass :size="props.large ? 24 : 20" />
-      </button>
+      <Transition name="transition-search" mode="in-out">
+        <button v-if="searchQuery" type="button" :class="props.large ? 'search__action-large' : 'search__action'" @click="handleSearch">
+          <PhMagnifyingGlass :size="props.large ? 24 : 20" />
+        </button>
+      </Transition>
     </div>
   </div>
 </template>
@@ -58,6 +60,17 @@ const handleSearch = () => {
     &-large {
       @include button($icon: true, $size: large);
     }
+  }
+}
+
+.transition-search {
+  &-enter-active, &-leave-active {
+    transition: var(--duration-default);
+  }
+
+  &-enter-from, &-leave-to {
+    opacity: 0;
+    transform: translateX(-6px);
   }
 }
 </style>

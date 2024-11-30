@@ -2,7 +2,7 @@
 import { dataTester } from '@app/utils/data-tester'
 
 definePageMeta({
-  layout: 'home',
+  layout: 'center',
 })
 </script>
 

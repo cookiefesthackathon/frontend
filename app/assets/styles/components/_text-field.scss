@@ -1,22 +1,27 @@
-@mixin text-field($variant: default) {
+@mixin text-field($size: default, $variant: layer1) {
   all: unset;
   box-sizing: border-box;
   width: 100%;
-  background: rgb(var(--color-layer-1));
   outline: 2px solid transparent;
   transition: var(--duration-default) outline;
 
-  &:focus {
-    outline: 2px solid rgb(var(--color-accent));
-  }
-
-  @if $variant == large {
+  @if $size == large {
     height: 48px;
     padding: 0 16px;
     border-radius: 16px;
-  } @else if $variant == default {
+  } @else if $size == default {
     height: 40px;
     padding: 0 12px;
     border-radius: 12px;
+  }
+
+  @if $variant == layer1 {
+    background: rgb(var(--color-layer-1));
+  } @else if $variant == layer2 {
+    background: rgb(var(--color-layer-2));
+  }
+
+  &:focus {
+    outline: 2px solid rgb(var(--color-accent));
   }
 }
