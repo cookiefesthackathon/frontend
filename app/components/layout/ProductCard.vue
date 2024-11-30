@@ -20,7 +20,8 @@ const props = defineProps<ProductCardProps>()
           width="76"
           height="76"
           fit="cover"
-          class="product-card__picture-img" />
+          class="product-card__picture-img"
+        />
       </div>
     </div>
     <div class="product-card__info">
@@ -47,7 +48,7 @@ const props = defineProps<ProductCardProps>()
           {{ props.name }}
         </Text>
         <div v-if="!props.small" class="product-card__rating">
-          <Rating :rating="{ value: 5.0, count: 423 }" />
+          <Rating :rating="{ value: props.rating.value, count: props.rating.count }" />
         </div>
       </div>
     </div>
@@ -93,7 +94,7 @@ const props = defineProps<ProductCardProps>()
   }
 
   &__name {
-    @include line-clamp(2);
+    @include line-clamp(1);
   }
 
   &__price {
@@ -122,6 +123,10 @@ const props = defineProps<ProductCardProps>()
     .product-card__info {
       flex-direction: column-reverse;
       gap: 12px;
+    }
+
+    .product-card__name {
+      @include line-clamp(2);
     }
   }
 }

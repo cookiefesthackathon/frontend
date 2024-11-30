@@ -1,15 +1,33 @@
 <script setup lang="ts">
 import type { SearchProps } from '@app/types'
 import { PhMagnifyingGlass } from '@phosphor-icons/vue'
+import { useSearch } from '@app/composables'
 
 const props = defineProps<SearchProps>()
+
+const { search } = useSearch()
+
+const searchQuery = ref('')
+const router = useRouter()
+
+const handleSearch = () => {
+  const formattedQuery = searchQuery.value.trim()
+  router.push(`/search?query=${formattedQuery}`)
+  search(formattedQuery)
+}
 </script>
 
 <template>
   <div class="search">
-    <input type="text" :class="props.large ? 'search__field-large' : 'search__field'" :placeholder="props.placeholder" />
+    <input
+      v-model="searchQuery"
+      type="text"
+      :class="props.large ? 'search__field-large' : 'search__field'"
+      :placeholder="props.placeholder"
+      @keydown.enter="handleSearch"
+    >
     <div class="search__wrapper">
-      <button type="button" :class="props.large ? 'search__action-large' : 'search__action'">
+      <button type="button" :class="props.large ? 'search__action-large' : 'search__action'" @click="handleSearch">
         <PhMagnifyingGlass :size="props.large ? 24 : 20" />
       </button>
     </div>

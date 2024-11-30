@@ -7,6 +7,7 @@
   background: rgb(var(--color-button-background));
   color: rgb(var(--color-button-content));
   transition: var(--duration-default) background;
+  white-space: nowrap;
 
   // Button colors
 
@@ -23,8 +24,8 @@
     --color-button-background: var(--color-caution);
     --color-button-content: var(--color-white);
   } @else if ($color == ghost) {
-    --color-button-background: var(--color-caution);
-    --color-button-content: var(--color-white);
+    --color-button-background: var(--color-background);
+    --color-button-content: var(--color-content);
   }
 
   // Button sizes

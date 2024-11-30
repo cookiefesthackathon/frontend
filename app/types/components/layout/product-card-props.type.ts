@@ -5,11 +5,12 @@ export interface Product {
   name: string
   price: ProductPrice
   image: string
-  description: string
   link: string
   rating: Rating
   seller: ProductSeller
   brand?: string
+  favorite?: boolean
+  options?: ProductOption
 }
 
 export interface ProductSeller {
@@ -17,14 +18,18 @@ export interface ProductSeller {
   rating: Rating
 }
 
+export interface ProductOption {
+  name: string
+  value: string
+}
+
 export interface ProductPrice {
   current: number
   base?: number
 }
 
-export type ProductWithoutDescription = Omit<Product, 'description'>
+export type ProductWithoutOptions = Omit<Product, 'options'>
 
-export interface ProductCardProps extends ProductWithoutDescription {
+export interface ProductCardProps extends ProductWithoutOptions {
   small?: boolean
-  favorite?: boolean
 }
