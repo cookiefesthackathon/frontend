@@ -75,10 +75,6 @@ const computedClasses = computed(() => {
       color: rgb(var(--color-caution));
     }
 
-    &-success {
-      color: rgb(var(--color-success));
-    }
-
     &-muted {
       color: rgb(var(--color-muted));
     }

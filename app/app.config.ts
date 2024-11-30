@@ -1,6 +1,6 @@
 export default defineAppConfig({
-  name: 'Nuxt Web App Template',
-  description: 'A template for Nuxt applications',
+  name: 'Marketplace',
+  description: 'Marketplace web application',
   locale: 'ru',
 
   themeColor: '#FFF',

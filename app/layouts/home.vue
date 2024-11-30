@@ -1,7 +1,7 @@
 <template>
   <div class="layout">
     <div class="layout__header">
-      <Header search />
+      <Header />
     </div>
     <div class="layout__slot">
       <slot />

@@ -1,0 +1,84 @@
+@mixin button($color: primary, $size: medium, $full-width: false, $icon: false) {
+  all: unset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  background: rgb(var(--color-button-background));
+  color: rgb(var(--color-button-content));
+  transition: var(--duration-default) background;
+
+  // Button colors
+
+  @if ($color == primary) {
+    --color-button-background: var(--color-accent);
+    --color-button-content: var(--color-white);
+  } @else if ($color == secondary) {
+    --color-button-background: var(--color-layer-1);
+    --color-button-content: var(--color-content);
+  } @else if ($color == critical) {
+    --color-button-background: var(--color-critical);
+    --color-button-content: var(--color-white);
+  } @else if ($color == caution) {
+    --color-button-background: var(--color-caution);
+    --color-button-content: var(--color-white);
+  }
+
+  // Button sizes
+
+  @if ($size == small) {
+    height: 32px;
+    padding: 0 16px;
+    border-radius: 10px;
+    font: var(--font-body-sm);
+    font-weight: 700;
+  } @else if ($size == medium) {
+    height: 40px;
+    padding: 0 24px;
+    border-radius: 12px;
+    font: var(--font-body-md);
+    font-weight: 700;
+  } @else if ($size == large) {
+    height: 48px;
+    padding: 0 32px;
+    border-radius: 16px;
+    font: var(--font-heading-lg);
+    font-weight: 700;
+  }
+
+  // Button full width
+
+  @if $full-width {
+    width: 100%;
+  }
+
+  @if $icon {
+    padding: 0;
+    @if $size == small {
+      width: 32px;
+    } @else if $size == medium {
+      width: 40px;
+    } @else if $size == large {
+      width: 48px;
+    }
+  }
+
+  &:not(:disabled),
+  &:not(:disabled):not([readonly]) {
+    cursor: pointer;
+  }
+
+  &:hover{
+    background: hsl(from rgb(var(--color-button-background)) h s calc(l - 2));
+  }
+
+  &:active {
+    background: hsl(from rgb(var(--color-button-background)) h s calc(l - 4));
+  }
+
+  &:disabled {
+    background: rgba(var(--color-button-background) / 0.5);
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}

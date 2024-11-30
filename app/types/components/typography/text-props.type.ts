@@ -32,7 +32,6 @@ export type TextPropsTone =
   | 'accent'
   | 'critical'
   | 'caution'
-  | 'success'
   | 'muted'
   | 'subtle'
   | 'content'

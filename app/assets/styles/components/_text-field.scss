@@ -1,0 +1,22 @@
+@mixin text-field($variant: default) {
+  all: unset;
+  box-sizing: border-box;
+  width: 100%;
+  background: rgb(var(--color-layer-1));
+  outline: 2px solid transparent;
+  transition: var(--duration-default) outline;
+
+  &:focus {
+    outline: 2px solid rgb(var(--color-accent));
+  }
+
+  @if $variant == large {
+    height: 48px;
+    padding: 0 16px;
+    border-radius: 16px;
+  } @else if $variant == default {
+    height: 40px;
+    padding: 0 12px;
+    border-radius: 12px;
+  }
+}

@@ -16,4 +16,26 @@
     opacity: 0;
   }
 }
+
+.layout {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1440px;
+  min-height: 100vh;
+  margin-inline: auto;
+  padding: 36px 48px;
+
+  &__header {
+    margin-bottom: 48px;
+  }
+
+  &__slot {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+  }
+}
 </style>

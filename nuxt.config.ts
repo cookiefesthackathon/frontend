@@ -1,7 +1,7 @@
 import path from 'path'
 
 export default defineNuxtConfig({
-  modules: ['@nuxt/eslint', '@nuxt/fonts'],
+  modules: ['@nuxt/eslint', '@nuxt/fonts', '@nuxt/image'],
   $production: {
     nitro: {
       preset: 'cloudflare-pages-static',

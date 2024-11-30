@@ -3,7 +3,6 @@ export default {
   plugins: ['stylelint-order'],
   rules: {
     // Stylistic Issues
-    'at-rule-empty-line-before': ['always', { except: ['first-nested'], ignore: ['after-comment', 'blockless-after-same-name-blockless'], severity: 'warning' }],
     'color-hex-length': ['short', { severity: 'warning' }],
     'comment-whitespace-inside': ['always', { severity: 'warning' }],
     'declaration-empty-line-before': ['always', { except: ['first-nested', 'after-declaration'], ignore: ['after-comment'], severity: 'warning' }],
