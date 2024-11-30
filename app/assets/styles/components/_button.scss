@@ -22,6 +22,9 @@
   } @else if ($color == caution) {
     --color-button-background: var(--color-caution);
     --color-button-content: var(--color-white);
+  } @else if ($color == ghost) {
+    --color-button-background: var(--color-caution);
+    --color-button-content: var(--color-white);
   }
 
   // Button sizes
@@ -32,18 +35,21 @@
     border-radius: 10px;
     font: var(--font-body-sm);
     font-weight: 700;
+    gap: 12px;
   } @else if ($size == medium) {
     height: 40px;
     padding: 0 24px;
     border-radius: 12px;
     font: var(--font-body-md);
     font-weight: 700;
+    gap: 16px;
   } @else if ($size == large) {
     height: 48px;
     padding: 0 32px;
     border-radius: 16px;
     font: var(--font-heading-lg);
     font-weight: 700;
+    gap: 20px;
   }
 
   // Button full width

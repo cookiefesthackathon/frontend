@@ -14,7 +14,9 @@ const isAuth = ref(false)
         </NuxtLink>
       </div>
       <div v-if="props.search" class="header__search">
-        <Search placeholder="Найти на Маркетплейсе..." />
+        <Transition name="transition-search" mode="out-in">
+          <Search placeholder="Найти на Маркетплейсе..." />
+        </Transition>
       </div>
     </div>
     <div class="header__auth">
@@ -43,6 +45,17 @@ const isAuth = ref(false)
     &-button {
       @include button();
     }
+  }
+}
+
+.transition-search {
+  &-enter-active, &-leave-active {
+    transition: var(--duration-default);
+  }
+
+  &-enter-from, &-leave-to {
+    transform: translateY(-6px);
+    opacity: 0;
   }
 }
 </style>

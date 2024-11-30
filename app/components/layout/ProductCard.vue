@@ -67,7 +67,11 @@ const props = defineProps<ProductCardProps>()
   background: rgb(var(--color-layer-1));
 
   &:hover {
-    background: rgb(var(--color-layer-2));
+    background: rgb(var(--color-layer-2) / 0.6);
+  }
+
+  &:active {
+    background: rgb(var(--color-layer-3) / 0.5);
   }
 
   &__picture {

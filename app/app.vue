@@ -30,12 +30,5 @@
   &__header {
     margin-bottom: 48px;
   }
-
-  &__slot {
-    display: flex;
-    flex-grow: 1;
-    justify-content: center;
-    align-items: center;
-  }
 }
 </style>

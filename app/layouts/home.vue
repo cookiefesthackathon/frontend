@@ -8,3 +8,14 @@
     </div>
   </div>
 </template>
+
+<style scoped lang="scss">
+.layout {
+  &__slot {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+  }
+}
+</style>
