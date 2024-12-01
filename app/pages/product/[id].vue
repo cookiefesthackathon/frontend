@@ -2,8 +2,7 @@
 import type { ProductCardProps } from '@app/types'
 import { PhHash, PhHeart, PhPackage, PhStorefront } from '@phosphor-icons/vue'
 import { formatPrice, calculateDiscount } from '@app/utils'
-import { useProduct, useFavorites, useAuth } from '@app/composables'
-import {use} from 'h3'
+import { useProduct, useFavorites } from '@app/composables'
 
 const route = useRoute()
 
