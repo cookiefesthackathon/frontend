@@ -39,14 +39,17 @@ function register({
       patname: patronymic,
     },
   }).then((data) => {
-    const typedData = data as { ok: boolean, usr_id: string }
+    console.log(data)
+    const typedData = data as { ok: boolean, id: string }
     authEmail.value = email
 
     if (typedData.ok) {
       localStorage.setItem('authEmail', email)
-      localStorage.setItem('userId', typedData.usr_id)
+      localStorage.setItem('userId', typedData.id)
       location.href = '/'
     }
+
+    return typedData
   })
 }
 
