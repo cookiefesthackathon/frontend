@@ -14,7 +14,7 @@ const products = computed<ProductCardProps[]>(() => result.value?.map((productDa
     base: productData.bad_price,
   },
   image: productData.img,
-  link: productData.link,
+  link: `/product/${productData.article}`,
   rating: {
     value: productData.product_rating,
     count: productData.feedbacks_count,
@@ -23,11 +23,12 @@ const products = computed<ProductCardProps[]>(() => result.value?.map((productDa
     name: productData.seller_name,
     rating: {
       value: productData.seller_rating,
-      count: productData.product_count,
+      count: productData.feedbacks_count,
     },
   },
   brand: productData.brand_name,
   favorite: false, // potom
+  quantity: productData.product_count,
 })))
 </script>
 

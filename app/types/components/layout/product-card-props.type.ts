@@ -11,6 +11,7 @@ export interface Product {
   brand?: string
   favorite?: boolean
   options?: ProductOption
+  quantity?: number
 }
 
 export interface ProductSeller {

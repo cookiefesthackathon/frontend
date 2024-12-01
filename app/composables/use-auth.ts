@@ -47,6 +47,8 @@ function register({
 function logOut() {
   authEmail.value = null
   localStorage.removeItem('authEmail')
+  localStorage.removeItem('userId')
+  location.reload()
 }
 
 export const useAuth = () => {
