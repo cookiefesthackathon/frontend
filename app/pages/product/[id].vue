@@ -59,7 +59,7 @@ const productData = computed<ProductCardProps | null>(() => {
         </button>
       </div>
       <div class="product__header-bottom">
-        <Rating :rating="{ value: productData?.rating.value as number, count: productData?.rating.count}" />
+        <Rating :rating="{ value: productData?.rating.value as number, count: productData?.rating.count }" />
       </div>
     </div>
     <ProductLayout>
@@ -125,7 +125,7 @@ const productData = computed<ProductCardProps | null>(() => {
             </Text>
           </div>
         </div>
-        <NuxtLink :to='productData?.link' target="_blank" class="product__base-action">
+        <NuxtLink :to="productData?.link" target="_blank" class="product__base-action">
           Перейти на сайт
         </NuxtLink>
       </div>
