@@ -19,7 +19,7 @@ const favorites = computed<ProductCardProps[]>(() => {
         base: parsedData.bad_price,
       },
       image: parsedData.img,
-      link: parsedData.link,
+      link: `/product/${parsedData.article}`,
       rating: {
         value: parsedData.product_rating,
         count: parsedData.feedbacks_count,
