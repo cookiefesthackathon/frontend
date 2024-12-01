@@ -104,7 +104,7 @@ const productData = computed<ProductCardProps | null>(() => {
                 Wildberries
               </Text>
             </Text>
-            <Rating :rating="{ value: Number(productData?.seller.rating.value), count: Number(productData?.seller.rating.count) }" class="product__base-rating" />
+            <Rating :rating="{ value: Number(productData?.seller.rating.value) }" class="product__base-rating" />
           </div>
           <div class="product__base-item">
             <PhPackage :size="20" />
