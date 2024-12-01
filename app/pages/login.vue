@@ -34,11 +34,11 @@ function handleLogIn() {
               <Text as="p" variant="bodySm" class="login__form-label">
                 Пароль
               </Text>
-              <input v-model="password" type="password" placeholder="Введите пароль" class="login__form-input">
+              <input v-model="password" type="password" placeholder="Введите пароль" class="login__form-input" @keydown.enter="handleLogIn">
             </div>
           </div>
           <div class="login__form-row">
-            <button @click="handleLogIn" type="button" class="login__form-action">
+            <button type="button" class="login__form-action" @click="handleLogIn" >
               Войти
             </button>
             <NuxtLink to="/register" type="button" class="login__form-register">

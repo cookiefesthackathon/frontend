@@ -25,7 +25,14 @@ const isAuth = computed(() => Boolean(authEmail.value))
       <NuxtLink v-if="!isAuth" to="/login" class="header__auth-button">
         Войти
       </NuxtLink>
-      <span v-else @click="logOut" class="header__auth-button">{{ authEmail }}</span>
+      <div v-else class="header__wrapper">
+        <Text as="p" weight="medium" class="header__email">
+          {{ authEmail }}
+        </Text>
+        <button type="button" @click="logOut" class="header__auth-logout">
+          Выйти
+        </button>
+      </div>
     </div>
   </header>
 </template>
@@ -44,9 +51,19 @@ const isAuth = computed(() => Boolean(authEmail.value))
     align-items: center;
   }
 
+  &__wrapper {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+
   &__auth {
     &-button {
       @include button();
+    }
+
+    &-logout {
+      @include button(secondary);
     }
   }
 }

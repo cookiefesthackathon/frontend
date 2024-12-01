@@ -1,16 +1,18 @@
 const appConfig = useAppConfig()
 
-const router = useRouter()
-
 const authEmail = ref(localStorage.getItem('authEmail') ?? null)
 
 function logIn(email: string, password: string) {
-  $fetch(`/auth?mail=${email}&password=${password}`, {
+  $fetch(`/auh?mail=${email}&password=${password}`, {
     baseURL: appConfig.apiUrl,
   }).then((data) => {
+    const typedData = data as { ok: boolean; user_id: string }
     authEmail.value = email
-    localStorage.setItem('authEmail', email)
-    router.push('/')
+    if (typedData.ok) {
+      localStorage.setItem('authEmail', email)
+      localStorage.setItem('userId', typedData.user_id)
+      location.href = '/'
+    }
   })
 }
 
@@ -38,7 +40,7 @@ function register({
   }).then((data) => {
     authEmail.value = email
     localStorage.setItem('authEmail', email)
-    router.push('/')
+    location.href = '/'
   })
 }
 

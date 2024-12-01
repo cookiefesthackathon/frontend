@@ -22,9 +22,6 @@ const discountTone = computed(() => {
         <NuxtImg
           :src="props.image"
           :alt="props.name"
-          width="76"
-          height="76"
-          fit="cover"
           class="product-card__picture-img"
         />
       </div>
@@ -87,7 +84,7 @@ const discountTone = computed(() => {
 
   &__picture {
     overflow: hidden;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 3 / 4;
     border-radius: 12px;
     background: rgb(var(--color-white));
 

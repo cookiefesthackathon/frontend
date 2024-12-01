@@ -47,7 +47,7 @@ const repeatedPasswordError = computed(
     <Constraint smaller>
       <Container>
         <Text as="h3" class="register__heading">
-          Войти
+          Зарегистрироваться
         </Text>
         <div class="register__form">
           <div class="register__form-items">
@@ -69,7 +69,7 @@ const repeatedPasswordError = computed(
               </Text>
               <input v-model="repeatedPassword" type="password" placeholder="Повторите пароль" class="register__form-input">
               <Text v-if="repeatedPasswordError" as="p" variant="caption" tone="critical" class="register__form-error">
-                Пароли не совпадают!
+                Пароли не совпадают
               </Text>
             </div>
             <div class="register__form-item">
@@ -88,7 +88,7 @@ const repeatedPasswordError = computed(
               <Text as="p" variant="bodySm" class="register__form-label">
                 Отчество
               </Text>
-              <input v-model="patronymic" type="text" placeholder="Введите отчество" class="register__form-input">
+              <input v-model="patronymic" type="text" placeholder="Введите отчество" class="register__form-input" @keydown.enter="handleRegister">
             </div>
           </div>
           <div class="register__form-row">

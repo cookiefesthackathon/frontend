@@ -13,7 +13,7 @@ const products = computed<ProductCardProps[]>(() => result.value?.map((productDa
     current: productData.price,
     base: productData.bad_price,
   },
-  image: 'https://svelte.dev/_app/immutable/assets/svelte-machine-desktop.BTbMsEvw.avif',
+  image: productData.img,
   link: productData.link,
   rating: {
     value: productData.product_rating,
