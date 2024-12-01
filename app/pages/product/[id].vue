@@ -2,13 +2,14 @@
 import type { ProductCardProps } from '@app/types'
 import { PhHash, PhHeart, PhPackage, PhStorefront } from '@phosphor-icons/vue'
 import { formatPrice, calculateDiscount } from '@app/utils'
-import { useProduct } from '@app/composables'
+import { useProduct, useFavorites } from '@app/composables'
 
 const route = useRoute()
 
 onMounted(() => {
   const product = useProduct(route.params.id as string)
   product?.loadProduct()
+  useFavorites().loadFavorites()
 })
 
 const productData = computed<ProductCardProps | null>(() => {
@@ -40,6 +41,52 @@ const productData = computed<ProductCardProps | null>(() => {
     quantity: parsedData.product_count,
   }
 })
+
+const favorites = computed<ProductCardProps[]>(() => {
+  const rawFavorites = useFavorites().favorites.value
+  if (!rawFavorites) return []
+  return rawFavorites.map((favoriteData: string) => {
+    const parsedData = JSON.parse(favoriteData)
+    return {
+      id: Number(parsedData.article),
+      name: parsedData.title,
+      price: {
+        current: parsedData.price,
+        base: parsedData.bad_price,
+      },
+      image: parsedData.img,
+      link: `/product/${parsedData.article}`,
+      rating: {
+        value: parsedData.product_rating,
+        count: parsedData.feedbacks_count,
+      },
+      seller: {
+        name: parsedData.seller_name,
+        rating: {
+          value: parsedData.seller_rating,
+          count: parsedData.product_count,
+        },
+      },
+      brand: parsedData.brand_name,
+    }
+  })
+})
+
+const toggleFavorite = () => {
+  if (productData.value?.id !== undefined) {
+    if (favorites.value.find(favorite => favorite.id === productData.value?.id)) {
+      useFavorites().removeFromFavorites(productData.value.id)
+      console.log('Removed from favorites')
+    } else {
+      useFavorites().addToFavorites(productData.value.id)
+      console.log('Added to favorites')
+    }
+  }
+}
+
+const computedFavorite = computed<boolean>(() => {
+  return productData.value?.id !== undefined && !!favorites.value.find(favorite => favorite.id === productData.value?.id)
+})
 </script>
 
 <template>
@@ -51,10 +98,10 @@ const productData = computed<ProductCardProps | null>(() => {
             {{ productData?.name }}
           </Text>
         </div>
-        <button type="button" class="product__header-action">
-          <PhHeart :size="24" />
+        <button type="button" class="product__header-action" :class="{ 'product__header-action--favorite': computedFavorite }" @click="toggleFavorite">
+          <PhHeart :size="24" :weight="computedFavorite ? 'fill' : 'regular'" />
           <Text as="p" weight="medium">
-            В избранное
+            {{ computedFavorite ? 'В избранном' : 'В избранное' }}
           </Text>
         </button>
       </div>
@@ -161,7 +208,11 @@ const productData = computed<ProductCardProps | null>(() => {
     }
 
     &-action {
-      @include button(ghost)
+      @include button(ghost);
+
+      &--favorite {
+        color: rgb(var(--color-critical));
+      }
     }
   }
 
@@ -217,12 +268,11 @@ const productData = computed<ProductCardProps | null>(() => {
     }
 
     &-rating {
-      min-width: 120px;
       color: rgb(var(--color-content));
     }
 
     &-action {
-      @include button(primary)
+      @include button(primary);
     }
   }
 }

@@ -129,10 +129,10 @@ const discountTone = computed(() => {
   &--small {
     flex-direction: row;
     gap: 16px;
+    align-items: center;
     padding: 16px;
 
     .product-card__picture {
-      width: 76px;
       height: 76px;
       border-radius: 12px;
     }
@@ -140,6 +140,7 @@ const discountTone = computed(() => {
     .product-card__info {
       flex-direction: column-reverse;
       gap: 12px;
+      width: 100%;
     }
 
     .product-card__name {

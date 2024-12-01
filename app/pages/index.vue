@@ -45,7 +45,7 @@ definePageMeta({
   <Main class="index">
     <Constraint>
       <Search large placeholder="Найти на Маркетплейсе..." class="index__search" />
-      <FavoritesGrid v-if="favorites.length" :products="favorites" heading="Избранные товары" class="index__grid" />
+      <FavoritesGrid v-if="favorites.length" :products="favorites.reverse()" heading="Избранные товары" class="index__grid" />
     </Constraint>
   </Main>
 </template>

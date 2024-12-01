@@ -35,10 +35,9 @@ const products = computed<ProductCardProps[]>(() => result.value?.map((productDa
 <template>
   <Main class="search">
     <Text as="h3" class="search__heading">
-      Поиск по запросу {{ query }}
+      Поиск по запросу «{{ query }}»
     </Text>
-    <!-- <pre>{{ result }}</pre> -->
-    <ProductsGrid :products="products" />
+    <ProductsGrid :loading="!products" :products="products" />
   </Main>
 </template>
 

@@ -42,7 +42,7 @@ const favorites = computed<ProductCardProps[]>(() => {
     <Text as="h3" class="favorites__heading">
       Избранное
     </Text>
-    <ProductsGrid :products="favorites" />
+    <ProductsGrid :products="favorites.reverse()" />
   </Main>
 </template>
 

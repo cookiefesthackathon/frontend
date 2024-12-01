@@ -12,8 +12,8 @@ export const useFavorites = () => {
     })
   }
 
-  function addToFavorites(productId: string) {
-    $fetch(`/favorites`, {
+  function addToFavorites(productId: number) {
+    $fetch(`/favorites?user_id=${localStorage.getItem('userId')}&artic=${productId}`, {
       baseURL: appConfig.apiUrl,
       method: 'POST',
       body: JSON.stringify({ user_id: localStorage.getItem('userId'), product_id: productId }),
@@ -22,8 +22,8 @@ export const useFavorites = () => {
     })
   }
 
-  function removeFromFavorites(productId: string) {
-    $fetch(`/favorites`, {
+  function removeFromFavorites(productId: number) {
+    $fetch(`/favorites?user_id=${localStorage.getItem('userId')}&artic=${productId}`, {
       baseURL: appConfig.apiUrl,
       method: 'DELETE',
       body: JSON.stringify({ user_id: localStorage.getItem('userId'), product_id: productId }),
