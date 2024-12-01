@@ -2,7 +2,8 @@
 import type { ProductCardProps } from '@app/types'
 import { PhHash, PhHeart, PhPackage, PhStorefront } from '@phosphor-icons/vue'
 import { formatPrice, calculateDiscount } from '@app/utils'
-import { useProduct, useFavorites } from '@app/composables'
+import { useProduct, useFavorites, useAuth } from '@app/composables'
+import {use} from 'h3'
 
 const route = useRoute()
 
@@ -87,6 +88,8 @@ const toggleFavorite = () => {
 const computedFavorite = computed<boolean>(() => {
   return productData.value?.id !== undefined && !!favorites.value.find(favorite => favorite.id === productData.value?.id)
 })
+
+const isAuth = computed(() => window.localStorage.getItem('userId'))
 </script>
 
 <template>
@@ -98,7 +101,7 @@ const computedFavorite = computed<boolean>(() => {
             {{ productData?.name }}
           </Text>
         </div>
-        <button type="button" class="product__header-action" :class="{ 'product__header-action--favorite': computedFavorite }" @click="toggleFavorite">
+        <button v-if="isAuth" type="button" class="product__header-action" :class="{ 'product__header-action--favorite': computedFavorite }" @click="toggleFavorite">
           <PhHeart :size="24" :weight="computedFavorite ? 'fill' : 'regular'" />
           <Text as="p" weight="medium">
             {{ computedFavorite ? 'В избранном' : 'В избранное' }}
