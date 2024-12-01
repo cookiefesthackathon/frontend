@@ -37,7 +37,7 @@ const productData = computed<ProductCardProps | null>(() => {
       },
     },
     brand: parsedData.brand_name,
-    quantity: parsedData.product_count
+    quantity: parsedData.product_count,
   }
 })
 </script>
