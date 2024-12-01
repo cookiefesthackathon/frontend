@@ -6,8 +6,9 @@ function logIn(email: string, password: string) {
   $fetch(`/auh?mail=${email}&password=${password}`, {
     baseURL: appConfig.apiUrl,
   }).then((data) => {
-    const typedData = data as { ok: boolean; user_id: string }
+    const typedData = data as { ok: boolean, user_id: string }
     authEmail.value = email
+
     if (typedData.ok) {
       localStorage.setItem('authEmail', email)
       localStorage.setItem('userId', typedData.user_id)
@@ -38,9 +39,14 @@ function register({
       patname: patronymic,
     },
   }).then((data) => {
+    const typedData = data as { ok: boolean, usr_id: string }
     authEmail.value = email
-    localStorage.setItem('authEmail', email)
-    location.href = '/'
+
+    if (typedData.ok) {
+      localStorage.setItem('authEmail', email)
+      localStorage.setItem('userId', typedData.usr_id)
+      location.href = '/'
+    }
   })
 }
 
