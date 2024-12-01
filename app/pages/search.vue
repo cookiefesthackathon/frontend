@@ -27,7 +27,6 @@ const products = computed<ProductCardProps[]>(() => result.value?.map((productDa
     },
   },
   brand: productData.brand_name,
-  favorite: false, // potom
   quantity: productData.product_count,
 })))
 </script>
@@ -44,7 +43,7 @@ const products = computed<ProductCardProps[]>(() => result.value?.map((productDa
 <style scoped lang="scss">
 .search {
   &__heading {
-    margin-bottom: 32px;
+    margin-bottom: 48px;
   }
 }
 </style>
