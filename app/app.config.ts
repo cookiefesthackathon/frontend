@@ -13,5 +13,5 @@ export default defineAppConfig({
     '2xl': 1536,
   },
 
-  apiUrl: 'http://57.129.67.116:5000',
+  apiUrl: 'https://temp-api.egor.me',
 })
