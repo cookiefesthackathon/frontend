@@ -7,7 +7,7 @@
 <style scoped lang="scss">
   .product-layout {
     display: grid;
-    grid-template-columns: 408px minmax(280px, 10fr) 408px;
+    grid-template-columns: repeat(2, 1fr);
     gap: 48px;
   }
 </style>

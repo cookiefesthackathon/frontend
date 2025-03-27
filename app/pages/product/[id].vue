@@ -115,14 +115,6 @@ const isAuth = computed(() => window.localStorage.getItem('userId'))
       <div class="product__picture">
         <NuxtImg :src="productData?.image" alt="Товар" class="product__picture-img" />
       </div>
-      <div class="product__info">
-        <Text as="h4" class="product__info-heading">
-          Описание
-        </Text>
-        <Text as="p" class="product__info-text">
-          Мы не успели :(
-        </Text>
-      </div>
       <div class="product__base">
         <div class="product__base-price">
           <div class="product__base-wrapper">
